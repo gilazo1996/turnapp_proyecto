@@ -28,7 +28,7 @@ $this->title = Yii::$app->name;
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Visualice los turnos agendados.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["turno/index"]);?>" class="btn btn-danger">Ver turnos</a>
+        <a href="<?php echo Url::toRoute(["turno/turnosadmin"]);?>" class="btn btn-danger">Ver turnos</a>
     </div>
 <!--////////////////////////////////////////////////////////////////////////////////////-->
     <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
@@ -65,7 +65,7 @@ $this->title = Yii::$app->name;
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Controle la lista de turnos creados.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-danger">Ver reporte</a>
+        <a href="<?php echo Url::toRoute(["turno/turnosreport"]);?>" class="btn btn-danger">Ver reporte</a>
     </div>
 <!--////////////////////////////////////////////////////////////////////////////////////-->
     <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
@@ -76,7 +76,7 @@ $this->title = Yii::$app->name;
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Controle la lista de usuarios.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-danger">Ver</a>
+        <a href="<?php echo Url::toRoute(["cliente/index"]);?>" class="btn btn-danger">Ver</a>
     </div>
 <!--////////////////////////////////////////////////////////////////////////////////////-->
     <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">

@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
-use backend\models\Turno;
-use backend\models\TurnoSearch;
+use backend\models\Cliente;
+use backend\models\ClienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TurnoController implements the CRUD actions for Turno model.
+ * ClienteController implements the CRUD actions for Cliente model.
  */
-class TurnoController extends Controller
+class ClienteController extends Controller
 {
     /**
      * @inheritDoc
@@ -24,7 +24,7 @@ class TurnoController extends Controller
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
-                        'delete' => ['POST', 'turnosadmin', 'turnosreport'],
+                        'delete' => ['POST'],
                     ],
                 ],
             ]
@@ -32,13 +32,13 @@ class TurnoController extends Controller
     }
 
     /**
-     * Lists all Turno models.
+     * Lists all Cliente models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new TurnoSearch();
+        $searchModel = new ClienteSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class TurnoController extends Controller
     }
 
     /**
-     * Displays a single Turno model.
+     * Displays a single Cliente model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,24 +61,16 @@ class TurnoController extends Controller
     }
 
     /**
-     * Creates a new Turno model.
+     * Creates a new Cliente model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Turno();
+        $model = new Cliente();
 
-        
         if ($this->request->isPost) {
-
-            if ($model->load($this->request->post())) {
-                
-                $model->prioridad = 1;   
-                $model->estado = 'pendiente';   
-                //var_dump($model->fecha_turno); die;
-
-                $model->save();
+            if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -91,7 +83,7 @@ class TurnoController extends Controller
     }
 
     /**
-     * Updates an existing Turno model.
+     * Updates an existing Cliente model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -111,7 +103,7 @@ class TurnoController extends Controller
     }
 
     /**
-     * Deletes an existing Turno model.
+     * Deletes an existing Cliente model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -125,51 +117,18 @@ class TurnoController extends Controller
     }
 
     /**
-     * Finds the Turno model based on its primary key value.
+     * Finds the Cliente model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Turno the loaded model
+     * @return Cliente the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Turno::findOne(['id' => $id])) !== null) {
+        if (($model = Cliente::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function actionTurnosadmin()
-    {
-        $searchModel = new TurnoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('turnosadmin', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    public function actionTurnosreport()
-    {
-        $searchModel = new TurnoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('turnosreport', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    // public function actionCalendar()
-    // {
-    //     $searchModel = new TurnoSearch();
-    //     $dataProvider = $searchModel->search($this->request->queryParams);
-
-    //     return $this->render('calendar', [
-    //         'searchModel' => $searchModel,
-    //         'dataProvider' => $dataProvider,
-    //     ]);
-    // }
 }
