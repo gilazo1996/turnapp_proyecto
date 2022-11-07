@@ -32,12 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'id_paciente',
             'id_profesional',
-            'id_sala',
-            'codigo_turno',
-            'detalle',
+           // 'id_sala',
+           // 'codigo_turno',
+            
             'fecha_turno',
-            'prioridad',
+            'horario',
+            //'prioridad',
             'estado',
+            'ambito',
+            'detalle',
         ],
     ]) ?>
 

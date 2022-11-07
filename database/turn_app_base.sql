@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2022 a las 15:11:25
+-- Tiempo de generación: 07-11-2022 a las 17:52:21
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -194,23 +194,24 @@ CREATE TABLE `turno` (
   `id_sala` smallint(5) UNSIGNED DEFAULT NULL,
   `codigo_turno` varchar(15) COLLATE latin1_spanish_ci DEFAULT NULL,
   `detalle` varchar(140) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `fecha_turno` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `prioridad` tinyint(3) UNSIGNED NOT NULL,
   `estado` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
   `horario` varchar(5) COLLATE latin1_spanish_ci NOT NULL DEFAULT '00:00',
-  `ambito` varchar(20) COLLATE latin1_spanish_ci NOT NULL
+  `ambito` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `fecha_turno` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `turno`
 --
 
-INSERT INTO `turno` (`id`, `id_paciente`, `id_profesional`, `id_sala`, `codigo_turno`, `detalle`, `fecha_turno`, `prioridad`, `estado`, `horario`, `ambito`) VALUES
-(4, 0, 1, 1, NULL, 'dar de baja el turno', '2022-10-31 03:00:00', 1, 'pendiente', '00:00', ''),
-(5, 0, 0, 0, NULL, 'No lo se', '2022-10-31 03:00:00', 1, 'pendiente', '00:00', ''),
-(7, 0, 0, NULL, NULL, 'Turno de prueba', '2022-11-18 03:00:00', 1, 'pendiente', '16', ''),
-(8, 0, 0, NULL, NULL, '', '2022-11-17 03:00:00', 1, 'pendiente', '13', ''),
-(9, 0, 0, NULL, NULL, 'Turno de prueba', '2022-11-11 03:00:00', 1, 'pendiente', '14', '1');
+INSERT INTO `turno` (`id`, `id_paciente`, `id_profesional`, `id_sala`, `codigo_turno`, `detalle`, `prioridad`, `estado`, `horario`, `ambito`, `fecha_turno`) VALUES
+(4, 0, 1, 1, NULL, 'dar de baja el turno', 1, 'pendiente', '13', '0', '2022-11-16'),
+(5, 0, 0, 0, NULL, 'No lo se', 1, 'pendiente', '11', '1', '2022-11-25'),
+(7, 0, 0, NULL, NULL, 'Turno de prueba', 1, 'pendiente', '16', '1', '2022-11-28'),
+(8, 0, 0, NULL, NULL, 'Turno de prueba', 1, 'pendiente', '8', '1', '2022-11-10'),
+(9, 0, 0, NULL, NULL, 'Turno de prueba', 1, 'pendiente', '14', '1', '2022-11-16'),
+(10, 0, 1, NULL, NULL, 'test', 1, 'pendiente', '13', '1', '2022-11-25');
 
 -- --------------------------------------------------------
 
@@ -352,7 +353,7 @@ ALTER TABLE `sala`
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `user`

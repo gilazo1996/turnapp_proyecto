@@ -58,12 +58,12 @@ class Turno extends \yii\db\ActiveRecord
             'id_profesional' => 'Profesional',
             'id_sala' => 'Sala',
             'codigo_turno' => 'Codigo del turno',
-            'detalle' => 'Detalle (opcional)',
+            'detalle' => 'Detalle',
             'fecha_turno' => 'Fecha del turno',
             'prioridad' => 'Prioridad',
             'estado' => 'Estado',
             'horario' => 'Horario',
-            'ambito'=> 'Ambito (opcional)',
+            'ambito'=> 'Ambito',
         ];
     }
 }

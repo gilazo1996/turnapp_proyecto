@@ -26,17 +26,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'showHeader' => false,
+        'summary' => '',
         //'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'id_paciente',
-            'id_profesional',
-            'id_sala',
+            //'id_paciente',
+           // 'id_profesional',
+            //'id_sala',
             //'codigo_turno',
-            'detalle',
             'fecha_turno',
+            'detalle',
             //'prioridad',
             'estado',
             //No results found.
@@ -59,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     .filters
     {
-        background-color: gray;
+        background-color: green;
     }
 
     table>thead>tr>th>a
@@ -69,8 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     table>a
     {
-        color:gray;
+        color:green;
     }
+
 </style>
 
 <script></script>
