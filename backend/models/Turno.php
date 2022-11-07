@@ -16,6 +16,8 @@ use Yii;
  * @property string $fecha_turno
  * @property int $prioridad
  * @property string $estado
+ * @property string $horario
+ * @property string $ambito
  */
 class Turno extends \yii\db\ActiveRecord
 {
@@ -35,10 +37,13 @@ class Turno extends \yii\db\ActiveRecord
         return [
             [['id_paciente', 'id_profesional', 'prioridad', 'estado'], 'required'],
             [['id_paciente', 'id_profesional', 'id_sala', 'prioridad'], 'integer'],
-            [['fecha_turno'], 'safe'],
+            [['fecha_turno'], 'required'],
             [['codigo_turno'], 'string', 'max' => 15],
             [['detalle'], 'string', 'max' => 140],
             [['estado'], 'string', 'max' => 50],
+            [['id_paciente'], 'integer'],
+            [['horario'], 'required'],
+            [['ambito'], 'string', 'max' => 20],
         ];
     }
 
@@ -52,11 +57,13 @@ class Turno extends \yii\db\ActiveRecord
             'id_paciente' => 'Cliente',
             'id_profesional' => 'Profesional',
             'id_sala' => 'Sala',
-            'codigo_turno' => 'Codigo Turno',
-            'detalle' => 'Detalle',
-            'fecha_turno' => 'Fecha Turno',
+            'codigo_turno' => 'Codigo del turno',
+            'detalle' => 'Detalle (opcional)',
+            'fecha_turno' => 'Fecha del turno',
             'prioridad' => 'Prioridad',
             'estado' => 'Estado',
+            'horario' => 'Horario',
+            'ambito'=> 'Ambito (opcional)',
         ];
     }
 }
