@@ -18,13 +18,13 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-/vendor
+#/vendor
 
 # composer itself is not needed
-composer.phar
+#composer.phar
 
 # composer lock
-composer.lock
+#composer.lock
 
 # Mac DS_Store Files
 .DS_Store
@@ -41,6 +41,6 @@ phpunit.phar
 /frontend/web/index.php
 /frontend/web/index-test.php
 /frontend/web/robots.txt
-/backend/web/index.php
-/backend/web/index-test.php
-/backend/web/robots.txt
+#/backend/web/index.php
+#/backend/web/index-test.php
+#/backend/web/robots.txt
