@@ -2,7 +2,7 @@
 
 //logout.php
 
-include('config.php');
+include('config-login.php');
 
 //Reset OAuth access token
 $google_client->revokeToken();
@@ -11,6 +11,6 @@ $google_client->revokeToken();
 session_destroy();
 
 //redirect page to index.php
-header('location:index.php');
+header('location:/web/index-login.php');
 
 ?>
