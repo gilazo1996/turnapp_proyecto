@@ -8,7 +8,7 @@ define('DB_USER_TBL', 'user');
 
 // Google API configuration
 define('GOOGLE_CLIENT_ID', '532529910671-is43eajsmmmsk6hts374fahoglt8n1fh.apps.googleusercontent.com');
-define('GOOGLE_CLIENT_SECRET', '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');
+define('GOOGLE_CLIENT_SECRET', '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');
 define('GOOGLE_REDIRECT_URL', 'http://localhost/turnapp_proyecto/backend/web/');
 
 // Start session
@@ -17,7 +17,8 @@ if (!session_id()) {
 }
 
 // Include Google API client library
-require_once '../../../turnapp_proyecto/vendor/autoload.php';
+require_once 'google-api-php-client/Google_Client.php';
+require_once 'google-api-php-client/contrib/Google_Oauth2Service.php';
 
 // Call Google API
 $gClient = new Google_Client();
@@ -26,7 +27,4 @@ $gClient->setClientId(GOOGLE_CLIENT_ID);
 $gClient->setClientSecret(GOOGLE_CLIENT_SECRET);
 $gClient->setRedirectUri(GOOGLE_REDIRECT_URL);
 
-$gClient->addScope('email');
-$gClient->addScope('profile');
-
-$google_oauthV2 = new Google_Service_Oauth2($gClient);
+$google_oauthV2 = new Google_Oauth2Service($gClient);
