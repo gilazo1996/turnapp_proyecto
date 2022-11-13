@@ -14,7 +14,7 @@ use yii\bootstrap4\Html;
 
 <?php 
 // Include configuration file
-require_once '../views/loginGoogle/google_config.php';
+require_once 'google_config.php';
 
 // Include User library file
 require_once '../../class/class_user.php';
@@ -57,51 +57,52 @@ if ($gClient->getAccessToken()) {
     // Render user profile data
     if (!empty($userData)) {
 
-        $output = '<div class="site-index" style="margin-bottom: 0%;">';
-        $output = '<div class="jumbotron text-center bg-transparent" style="padding-bottom: 0%;">';
-        $output = '<h1 class="display-4">Bienvenido!</h1>';
-        $output = '<p class="lead">Sistema y Gestión de Turnos.</p>';
-        $output = '</div>';
-        $output = '</div>';
+        $output = '<p><b>Name:</b> '.$userData['first_name'].' '.$userData['last_name'].'</p>';
+        $output .= '<div class="site-index" style="margin-bottom: 0%;">';
+        $output .= '<div class="jumbotron text-center bg-transparent" style="padding-bottom: 0%;">';
+        $output .= '<h1 class="display-4">Bienvenido!</h1>';
+        $output .= '<p class="lead">Sistema y Gestión de Turnos.</p>';
+        $output .= '</div>';
+        $output .= '</div>';
 
-        $output = '<div class="text-center bg-transparent md-col-3" style="flex-wrap:wrap; display:flex; justify-content:center; align-items:center">';
-        $output = '<div class="card" style="height:220px; width:300px; margin:3%; background-color:rgb(50,58,64);">';
-        $output = '<div class="card-header">';
-        $output = '<h4 class="card-title text-white"> MIS TURNOS </h4>';
-        $output = '</div>';
-        $output = '<div class="card-body">';
-        $output = '<!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->';
-        $output = '<p class="card-text text-white"> Visualice los turnos ya agendados.</p>';
-        $output = '</div>';
-        $output = '<a href="<?php echo Url::toRoute(["turno/index"]);?>" class="btn btn-danger">Ver mis turnos</a>';
-        $output = '</div>';
-
-
-        $output = '<div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">';
-        $output = '<div class="card-header">';
-        $output = '<h4 class="card-title text-white"> CREAR TURNO </h4>';
-        $output = '</div>';
-        $output = '<div class="card-body">';
-        $output = '<!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->';
-        $output = '<p class="card-text text-white"> Realice un nuevo turno que necesite.</p>';
-        $output = '</div>';
-        $output = '<a href="<?php echo Url::toRoute(["turno/create"]);?>" class="btn btn-danger">Crear turno</a>';
-        $output = '</div>';
+        $output .= '<div class="text-center bg-transparent md-col-3" style="flex-wrap:wrap; display:flex; justify-content:center; align-items:center">';
+        $output .= '<div class="card" style="height:220px; width:300px; margin:3%; background-color:rgb(50,58,64);">';
+        $output .= '<div class="card-header">';
+        $output .= '<h4 class="card-title text-white"> MIS TURNOS </h4>';
+        $output .= '</div>';
+        $output .= '<div class="card-body">';
+        $output .= '<!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->';
+        $output .= '<p class="card-text text-white"> Visualice los turnos ya agendados.</p>';
+        $output .= '</div>';
+        $output .= '<a href="<?php echo Url::toRoute(["turno/index"]);?>" class="btn btn-danger">Ver mis turnos</a>';
+        $output .= '</div>';
 
 
-        $output = '<div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">';
-        $output = '<div class="card-header">';
-        $output = '<h4 class="card-title text-white"> CALENDARIO </h4>';
-        $output = '</div>';
-        $output = '<div class="card-body">';
-        $output = '<!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->';
-        $output = '<p class="card-text text-white"> Visualice los turnos en modo calendario.</p>';
-        $output = '</div>';
-        $output = '<a href="<?php echo Url::toRoute(["event/index"]);?>" class="btn btn-danger">Ver</a>';
-        $output = '</div>';
+        $output .= '<div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">';
+        $output .= '<div class="card-header">';
+        $output .= '<h4 class="card-title text-white"> CREAR TURNO </h4>';
+        $output .= '</div>';
+        $output .= '<div class="card-body">';
+        $output .= '<!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->';
+        $output .= '<p class="card-text text-white"> Realice un nuevo turno que necesite.</p>';
+        $output .= '</div>';
+        $output .= '<a href="../views/turno/create.php" class="btn btn-danger">Crear turno</a>';
+        $output .= '</div>';
+
+
+        $output .= '<div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">';
+        $output .= '<div class="card-header">';
+        $output .= '<h4 class="card-title text-white"> CALENDARIO </h4>';
+        $output .= '</div>';
+        $output .= '<div class="card-body">';
+        $output .= '<!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->';
+        $output .= '<p class="card-text text-white"> Visualice los turnos en modo calendario.</p>';
+        $output .= '</div>';
+        $output .= '<a href="event/index.php" class="btn btn-danger">Ver</a>';
+        $output .= '</div>';
     
-        $output = '</div>';
-        $output = '<p>Logout from <a href="../views/loginGoogle/logout.php">Google</a></p>';
+        $output .= '</div>';
+        $output .= '<p>Logout from <a href="../views/site/logout.php">Google</a></p>';
 
         /*
         $output  = '<h2>Google Account Details</h2>';
