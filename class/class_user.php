@@ -5,8 +5,8 @@ class User
     private $dbHost = 'localhost';
     private $dbUsername = 'root';
     private $dbPassword = '';
-    private $dbName = 'bd_rapida';
-    private $userTbl = 'users';
+    private $dbName = 'turn_app_base';
+    private $userTbl = 'user';
     
     public function __construct()
     {
@@ -26,16 +26,16 @@ class User
     {
         if (!empty($userData)) {
             // Check whether user data already exists in database
-            $prevQuery = "SELECT * FROM ".$this->userTbl." WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
+            $prevQuery = "SELECT * FROM ".$this->userTbl." WHERE email = '".$userData['email']."'";
         
             $prevResult = $this->db->query($prevQuery);
             if ($prevResult->num_rows > 0) {
                 // Update user data if already exists
-                $query = "UPDATE ".$this->userTbl." SET first_name = '".$userData['first_name']."', last_name = '".$userData['last_name']."', email = '".$userData['email']."', gender = '".$userData['gender']."', locale = '".$userData['locale']."', picture = '".$userData['picture']."', link = '".$userData['link']."', modified = NOW() WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
+                $query = "UPDATE ".$this->userTbl." SET username = '".$userData['first_name']."', email = '".$userData['email']."'";
                 $update = $this->db->query($query);
             } else {
                 // Insert user data
-                $query = "INSERT INTO ".$this->userTbl." SET oauth_provider = '".$userData['oauth_provider']."', oauth_uid = '".$userData['oauth_uid']."', first_name = '".$userData['first_name']."', last_name = '".$userData['last_name']."', email = '".$userData['email']."', gender = '".$userData['gender']."', locale = '".$userData['locale']."', picture = '".$userData['picture']."', link = '".$userData['link']."', created = NOW(), modified = NOW()";
+                $query = "INSERT INTO ".$this->userTbl." SET username = '".$userData['first_name']."', email = '".$userData['email']."'";
                 $insert = $this->db->query($query);
             }
             // Get the user data from the database

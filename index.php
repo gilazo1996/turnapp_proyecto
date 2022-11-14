@@ -41,6 +41,7 @@ if ($gClient->getAccessToken()) {
     $_SESSION['userData'] = $userData;
     
     // Render user profile data
+    /*
     if (!empty($userData)) {
         $output  = '<h2>Google Account Details</h2>';
         $output .= '<div class="ac-data">';
@@ -57,6 +58,7 @@ if ($gClient->getAccessToken()) {
     } else {
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
     }
+    */
 } else {
     // Get login url
     $authUrl = $gClient->createAuthUrl();
@@ -74,10 +76,16 @@ if ($gClient->getAccessToken()) {
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<div class="container">
-    <div class="wrapper">
-        <?php echo $output; ?>
+    <div class="container">
+        <div class="row">
+            <h2 class="wrapper">Bienvenido a TurnApp</h2>
+            <center><img class="logo" src="https://septum.com.ar/wp-content/uploads/2021/08/SEPTUM-iconos-04.png"></center>
+        </div>
     </div>
-</div>
+    <div class="container">
+        <div class="wrapper center">
+            <?php echo $output; ?>
+        </div>
+    </div>
 </body>
 </html>

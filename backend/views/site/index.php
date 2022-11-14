@@ -5,12 +5,10 @@ use yii\bootstrap4\Html;
 
 $this->title = Yii::$app->name;
 
-/*require_once '../../google_config.php';
+require_once '../../class/class_user.php';
 
-$gpUserProfile = $google_oauthV2->userinfo->get();
-$gpUserData['first_name'] = !empty($gpUserProfile['given_name'])?$gpUserProfile['given_name']:'';
-*/
-
+$user = new User();
+$userData = $user->checkUser($_SESSION['userData']);
 ?>
 
 <?php //var_dump(Url::toRoute(["turno/index"])); die; ?>
