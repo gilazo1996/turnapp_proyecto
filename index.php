@@ -42,20 +42,21 @@ if ($gClient->getAccessToken()) {
     
     // Render user profile data
     if (!empty($userData)) {
-        $output  = '<h2>Google Account Details</h2>';
+        $output  = '<h1>Bienvenido a Turnapp</h1>';
         $output .= '<div class="ac-data">';
-        $output .= '<img src="'.$userData['picture'].'">';
-        $output .= '<p><b>Google ID:</b> '.$userData['oauth_uid'].'</p>';
-        $output .= '<p><b>Name:</b> '.$userData['first_name'].' '.$userData['last_name'].'</p>';
+        //$output .= '<img src="'.$userData['picture'].'">';
+       // $output .= '<p><b>Google ID:</b> '.$userData['oauth_uid'].'</p>';
+        $output .= '<p><b>Nombre:</b> '.$userData['first_name'].' '.$userData['last_name'].'</p>';
         $output .= '<p><b>Email:</b> '.$userData['email'].'</p>';
-        $output .= '<p><b>Gender:</b> '.$userData['gender'].'</p>';
-        $output .= '<p><b>Locale:</b> '.$userData['locale'].'</p>';
-        $output .= '<p><b>Logged in with:</b> Google</p>';
-        $output .= '<p><a href="'.$userData['link'].'" target="_blank">Click to visit Google+</a></p>';
-        $output .= '<p>Logout from <a href="logout.php">Google</a></p>';
+        //$output .= '<p><b>Gender:</b> '.$userData['gender'].'</p>';
+        //$output .= '<p><b>Locale:</b> '.$userData['locale'].'</p>';
+        //$output .= '<p><b>Logged in with:</b> Google</p>';
+       // $output .= '<p><a href="'.$userData['link'].'" target="_blank">Click to visit Google+</a></p>';
+        $output .= '<p> <a href="http://localhost/turnapp_proyecto/backend/web/">Volver a la pagina principal</a></p>';
+        $output .= '<br> <br> <p><a href="logout.php">Cerrar sesion</a></p>';
         $output .= '</div>';
     } else {
-        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+        $output = '<h3 style="color:red">Hubo un error, intente de nuevo.</h3>';
     }
 } else {
     // Get login url
