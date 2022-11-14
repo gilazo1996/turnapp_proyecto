@@ -87,7 +87,8 @@ $this->title = Yii::$app->name;
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Gestione rol de usuarios.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-danger">Ver</a>
+        <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+
     </div>
     
 </div>
