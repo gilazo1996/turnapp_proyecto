@@ -11,9 +11,9 @@ $this->title = Yii::$app->name;
 <div class="site-index" style="margin-top: 0%;">
 
     <div class="jumbotron text-center bg-transparent" style="padding-bottom: 0rem; padding: 0.5rem 0rem;">
-        <h1 class="display-4">Bienvenido!</h1>
+        <h1 class="display-4">Panel de administracion</h1>
 
-        <p class="lead">Sistema y Gestión de Turnos.</p>
+      
     </div>
 
 </div>

@@ -30,17 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             //'id',
-            'id_paciente',
-            'id_profesional',
-           // 'id_sala',
-           // 'codigo_turno',
-            
             'fecha_turno',
             'horario',
+            //'id_paciente',
+            'nombre_paciente',
+           // 'id_profesional',
+            'nombre_profesional',
+           // 'id_sala',
+           // 'codigo_turno',
             //'prioridad',
-            'estado',
             'ambito',
             'detalle',
+            'estado',
         ],
     ]) ?>
 
