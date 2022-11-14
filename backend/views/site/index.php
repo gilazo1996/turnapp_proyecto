@@ -57,7 +57,7 @@ $this->title = Yii::$app->name;
 </div>
 
   
-    <a href="http://localhost/turnapp_proyecto/index.php">iniciar sesion</a>
+   
 
 
 <!-- <div class="site-index">

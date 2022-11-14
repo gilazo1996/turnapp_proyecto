@@ -42,17 +42,18 @@ if ($gClient->getAccessToken()) {
     
     // Render user profile data
     if (!empty($userData)) {
-        $output  = '<h1>Bienvenido a Turnapp</h1>';
+        $output  = '<h1>Su perfil de Turnapp</h1>';
         $output .= '<div class="ac-data">';
         //$output .= '<img src="'.$userData['picture'].'">';
        // $output .= '<p><b>Google ID:</b> '.$userData['oauth_uid'].'</p>';
-        $output .= '<p><b>Nombre:</b> '.$userData['first_name'].' '.$userData['last_name'].'</p>';
-        $output .= '<p><b>Email:</b> '.$userData['email'].'</p>';
+        
+        $output .= '<p>Nombre: '.$userData['first_name'].' '.$userData['last_name'].'</p>';
+        $output .= '<p>Email: '.$userData['email'].'</p>';
         //$output .= '<p><b>Gender:</b> '.$userData['gender'].'</p>';
         //$output .= '<p><b>Locale:</b> '.$userData['locale'].'</p>';
         //$output .= '<p><b>Logged in with:</b> Google</p>';
        // $output .= '<p><a href="'.$userData['link'].'" target="_blank">Click to visit Google+</a></p>';
-        $output .= '<p> <a href="http://localhost/turnapp_proyecto/backend/web/">Volver a la pagina principal</a></p>';
+        $output .= '<p> <a href="http://localhost/turnapp_proyecto/backend/web/">Ir a la pagina principal</a></p>';
         $output .= '<br> <br> <p><a href="logout.php">Cerrar sesion</a></p>';
         $output .= '</div>';
     } else {
@@ -63,7 +64,9 @@ if ($gClient->getAccessToken()) {
     $authUrl = $gClient->createAuthUrl();
     
     // Render google login button
-    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="image/sign-in-with-google.svg" alt="sign-in-with-google" /></a>';
+    $output  = '<h1>Bienvenido a Turnapp!</h1>';
+    $output  .= '<h2>Para continuar inicie sesion en Google</h1>';
+    $output .= '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="image/sign-in-with-google.svg" alt="sign-in-with-google" /></a>';
 }
 ?>
 

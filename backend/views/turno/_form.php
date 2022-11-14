@@ -41,15 +41,7 @@ $ambito = ['0'=>'Salud', '1'=>'Banco','2'=>'Otros'];
 
     <?= $form->field($model, 'detalle')->textInput(['maxlength' => true, 'placeholder' => 'Agregue sus notas personales']); ?>  
     
-<<<<<<< HEAD
   
-=======
-    <br>
-    
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-danger']) ?>
-    </div>
->>>>>>> ramaDavidLogin
     <?php ActiveForm::end(); ?>
 
     
