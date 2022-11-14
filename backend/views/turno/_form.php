@@ -47,7 +47,7 @@ $ambito = ['0'=>'Salud', '1'=>'Banco','2'=>'Otros'];
     
 
     <a href="http://localhost/turnapp_proyecto/backend/web/turno/index">
-   <input type="button" value="Guardar" />
-</a>
+        <input type="button" value="Guardar" />
+    </a>
 
 </div>

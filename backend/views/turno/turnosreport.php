@@ -16,52 +16,36 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="turno-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    
-    <br>
-    <p>
-        <?php //Html::a('Crear nuevo Turno', ['create'], ['class' => 'btn btn-danger']) ?>
-    </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <table class="table">
+            <tr>
+                    <td> <b>id</b> </td>
+                    <td><b>cliente</b></td>
+                    <td><b>fecha</b></td>
+                    <td><b>estado</b></td>
+                    <td><b>motivo</b></td>
+            </tr>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            <tr>
+                <td>11</td>
+                <td>David Cardozo</td>
+                <td>2022-11-12</td>
+                <td>cancelado</td>
+                <td>no puedo asistir</td>
+            </tr>
 
-            //'id',
-            'id_paciente',
-            'id_profesional',
-            'id_sala',
-            'codigo_turno',
-            'detalle',
-            'fecha_turno',
-            'prioridad',
-            'estado',
-            //No results found.
-        ],
-    ]); ?>
+        </table>
 
-</div>
+
+
 
 <style>
-    .table
-    {
-        color:black;
-    }
-
-    .filters
-    {
-        background-color: gray;
-    }
-
     table>thead>tr>th>a
     {
         color:black;
     }
 
-    table>a
+    table>tr
     {
         color:gray;
     }

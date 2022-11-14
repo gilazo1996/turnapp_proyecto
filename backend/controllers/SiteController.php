@@ -24,11 +24,11 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'index', 'indexadmin'],
+                        'actions' => ['login', 'error', 'index', 'indexadmin','indexproveedor'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'indexadmin'],
+                        'actions' => ['logout', 'index', 'indexadmin','indexproveedor'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -105,5 +105,10 @@ class SiteController extends Controller
     public function actionIndexadmin()
     {
         return $this->render('index-admin');
+    }
+
+    public function actionIndexproveedor()
+    {
+        return $this->render('index-proveedor');
     }
 }
