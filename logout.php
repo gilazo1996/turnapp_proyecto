@@ -13,4 +13,4 @@ $gClient->revokeToken();
 session_destroy();
 
 // Redirect to homepage
-header('Location: http://localhost/turnapp_proyecto/index.php');
+header('Location: http://localhost/turnapp_proyecto/backend/web/');

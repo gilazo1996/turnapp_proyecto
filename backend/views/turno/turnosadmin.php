@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var backend\models\TurnoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Turnos (admin y proveedor)';
+$this->title = 'Turnos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="turno-index">
@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'id_paciente',
             'id_profesional',
-            /*'id_sala',
-            'codigo_turno',*/
+            'id_sala',
+            'codigo_turno',
             'detalle',
             'fecha_turno',
             'prioridad',

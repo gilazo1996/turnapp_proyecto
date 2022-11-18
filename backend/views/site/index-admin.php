@@ -11,9 +11,9 @@ $this->title = Yii::$app->name;
 <div class="site-index" style="margin-top: 0%;">
 
     <div class="jumbotron text-center bg-transparent" style="padding-bottom: 0rem; padding: 0.5rem 0rem;">
-        <h1 class="display-4">Panel de administracion</h1>
+        <h1 class="display-4">Bienvenido!</h1>
 
-      
+        <p class="lead">Sistema y Gestión de Turnos.</p>
     </div>
 
 </div>
@@ -44,13 +44,13 @@ $this->title = Yii::$app->name;
 <!--////////////////////////////////////////////////////////////////////////////////////-->
     <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
             <div class="card-header">
-            <h4 class="card-title text-white"> MODIFICAR TURNO </h4>
+            <h4 class="card-title text-white"> LECTOR QR </h4>
         </div>
         <div class="card-body">
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
-            <p class="card-text text-white"> Cambie el estado.</p>
+            <p class="card-text text-white"> Escanee el codigo QR para validar turnos.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["../../estadoTurno.php"]);?>" class="btn btn-danger">Ver</a>
+        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-danger">Ver</a>
     </div>
     
 </div>
@@ -79,8 +79,7 @@ $this->title = Yii::$app->name;
         <a href="<?php echo Url::toRoute(["cliente/index"]);?>" class="btn btn-danger">Ver</a>
     </div>
 <!--////////////////////////////////////////////////////////////////////////////////////-->
-<!--////////////////////////////////////////////////////////////////////////////////////-->
-<div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
+    <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
             <div class="card-header">
             <h4 class="card-title text-white"> ASIGNAR PROVEEDORES </h4>
         </div>
@@ -88,10 +87,7 @@ $this->title = Yii::$app->name;
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Gestione rol de usuarios.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["../../roles.php"]);?>" class="btn btn-danger">Ver</a>
-
-        <!--<a href="http://localhost/turnapp_proyecto/roles.php">Ver</a>
-////////////////////////////////////////////////////////////////////////////////////-->
-
+        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-danger">Ver</a>
+    </div>
     
 </div>

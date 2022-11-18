@@ -18,8 +18,7 @@ class TurnoSearch extends Turno
     {
         return [
             [['id', 'id_paciente', 'id_profesional', 'id_sala', 'prioridad'], 'integer'],
-            [['codigo_turno', 'detalle', 'fecha_turno', 'estado','nombre_paciente','nombre_profesional'], 'safe'],
-            [['nombre_paciente','nombre_profesional'], 'string'],
+            [['codigo_turno', 'detalle', 'fecha_turno', 'estado'], 'safe'],
         ];
     }
 
@@ -60,11 +59,8 @@ class TurnoSearch extends Turno
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            //'id_paciente' => $this->id_paciente,
-            //'id_profesional' => $this->id_profesional,
-            //'id' => $this->id,
-            'nombre_paciente' => $this->nombre_paciente,
-            'nombre_profesional' => $this->nombre_profesional,
+            'id_paciente' => $this->id_paciente,
+            'id_profesional' => $this->id_profesional,
             'id_sala' => $this->id_sala,
             'fecha_turno' => $this->fecha_turno,
             'prioridad' => $this->prioridad,
