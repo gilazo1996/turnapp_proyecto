@@ -5,8 +5,8 @@ class User
     private $dbHost = 'localhost';
     private $dbUsername = 'root';
     private $dbPassword = '';
-    private $dbName = 'bd_rapida';
-    private $userTbl = 'users';
+    private $dbName = 'turn_app_base';
+    private $userTbl = 'usuarios';
     
     public function __construct()
     {
