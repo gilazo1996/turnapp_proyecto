@@ -3,8 +3,8 @@
 define('DB_HOST', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'bd_rapida');
-define('DB_USER_TBL', 'user');
+define('DB_NAME', 'turn_app_base');
+define('DB_USER_TBL', 'usuarios');
 
 // Google API configuration
 define('GOOGLE_CLIENT_ID', '777810668202-bttikoe0vk0ju7dv3njo7ovb1tg6u9l0.apps.googleusercontent.com');
