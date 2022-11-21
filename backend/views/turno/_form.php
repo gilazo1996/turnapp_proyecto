@@ -1,5 +1,7 @@
 <?php
 
+namespace backend\models;
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -7,9 +9,11 @@ use yii\widgets\ActiveForm;
 /** @var backend\models\Turno $model */
 /** @var yii\widgets\ActiveForm $form */
 
+use yii\helpers\ArrayHelper;
+
 //arrays provisorios...
 $cliente = ['0'=>'Juan Maswick'];
-$profesional = ['0'=>'PEREZ, Ivan', '1'=>'BONFIRE, Esther'];
+//$profesional = ['0'=>'PEREZ, Ivan', '1'=>'BONFIRE, Esther'];
 //$sala = ['0'=>'001', '1'=>'002'];
 $horario = ['0'=> '06:00','1'=> '07:00','2'=> '08:00','3'=> '09:00'
 ,'4'=> '10:00','5'=> '11:00','6'=> '12:00','7'=> '13:00','8'=> '14:00'
@@ -25,7 +29,7 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
 
     <?= $form->field($model, 'id_paciente')->dropDownList(($cliente), ['prompt' => 'Seleccione el cliente' ]); ?>
 
-    <?= $form->field($model, 'id_profesional')->dropDownList(($profesional), ['prompt' => 'Seleccione el profesional' ]); ?>
+    <?= $form->field($model, 'id_profesional')->dropDownList(ArrayHelper::map(Profesional::find()->all(), 'id', 'nombre')); ?>
 
     <?= $form->field($model, 'fecha_turno')->widget(\yii\jui\DatePicker::className(), [
         
