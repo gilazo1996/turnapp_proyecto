@@ -4,11 +4,6 @@ use yii\bootstrap4\Html;
 /** @var yii\web\View $this */
 
 $this->title = Yii::$app->name;
-
-require_once '../../class/class_user.php';
-
-$user = new User();
-$userData = $user->checkUser($_SESSION['userData']);
 ?>
 
 <?php //var_dump(Url::toRoute(["turno/index"])); die; ?>
@@ -16,7 +11,7 @@ $userData = $user->checkUser($_SESSION['userData']);
 <div class="site-index" style="margin-bottom: 0%;">
 
     <div class="jumbotron text-center bg-transparent" style="padding-bottom: 0%;">
-        <h1 class="display-4">Bienvenido! <?php echo $_SESSION['userData']['first_name']; ?>  </h1>
+        <h1 class="display-4">Bienvenido!</h1>
 
         <p class="lead">Sistema y Gestión de Turnos.</p>
     </div>
@@ -60,13 +55,21 @@ $userData = $user->checkUser($_SESSION['userData']);
     
 </div>
 
+  
+    <!-- <a href="http://localhost/turnapp_proyecto/index.php">iniciar sesion</a> -->
+
+
 <!-- <div class="site-index">
+
     <div class="jumbotron text-center bg-transparent">
         <h1 class="display-4">Bienvenido!</h1>
+
         <p class="lead">Sistema y Gestión de Turnos.</p>
+
         <p></p>
         <p><a class="btn btn-lg btn-danger col-5" href="<?php echo Url::toRoute(["producto/index"]);?>">Lista de productos</a></p>
         <p><a class="btn btn-lg btn-success col-5" href="<?php echo Url::toRoute(["venta/index"]);?>">Ventas</a></p>
         <p><a class="btn btn-lg btn-warning col-5" href="<?php echo Url::toRoute(["venta/reporte"]);?>">Reportes</a></p>
     </div>
+
 </div> -->

@@ -3,13 +3,13 @@
 define('DB_HOST', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'bd_rapida');
-define('DB_USER_TBL', 'user');
+define('DB_NAME', 'turn_app_base');
+define('DB_USER_TBL', 'usuarios');
 
 // Google API configuration
-define('GOOGLE_CLIENT_ID', '532529910671-is43eajsmmmsk6hts374fahoglt8n1fh.apps.googleusercontent.com');
-define('GOOGLE_CLIENT_SECRET', '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');
-define('GOOGLE_REDIRECT_URL', 'http://localhost/turnapp_proyecto/backend/web/');
+define('GOOGLE_CLIENT_ID', '777810668202-bttikoe0vk0ju7dv3njo7ovb1tg6u9l0.apps.googleusercontent.com');
+define('GOOGLE_CLIENT_SECRET', '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');
+define('GOOGLE_REDIRECT_URL', 'http://localhost/turnapp_proyecto/');
 
 // Start session
 if (!session_id()) {
@@ -22,7 +22,7 @@ require_once 'google-api-php-client/contrib/Google_Oauth2Service.php';
 
 // Call Google API
 $gClient = new Google_Client();
-$gClient->setApplicationName('turnapp_proyecto');
+$gClient->setApplicationName('logeophp');
 $gClient->setClientId(GOOGLE_CLIENT_ID);
 $gClient->setClientSecret(GOOGLE_CLIENT_SECRET);
 $gClient->setRedirectUri(GOOGLE_REDIRECT_URL);

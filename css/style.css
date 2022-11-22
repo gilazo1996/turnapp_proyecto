@@ -20,20 +20,14 @@
 .ac-data{
     text-align: left;
 }
-
-img.logo {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
-
-
+.colGray{
+	background-color: rgb(50,58,64) !important;
 }
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+#footer {
+   position:fixed;
+   bottom:0px;
+   padding-left: 80px;
+}
+.imgtitle{
+	width: 100px;
 }
