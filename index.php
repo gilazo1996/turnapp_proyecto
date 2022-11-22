@@ -75,7 +75,7 @@ if ($gClient->getAccessToken()) {
 <meta charset="utf-8">
 <title>logeophp</title>
 <link rel="stylesheet" href="css/style.css"/>
-<link rel="stylesheet" type="text/css" href="backend/web/assets/d1261be3/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
 </head>
 <body>
