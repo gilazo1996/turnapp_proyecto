@@ -25,24 +25,69 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
+        'summary' => '',
+        'options' => [
+            'class' => 'colorizado',
+        ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           /* ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            'id',*/
             'dni',
             'nombre',
             'apellido',
-            'email:email',
+            'email',
+            'rol',
             //'fecha_nacimiento',
-            [
+           /* [
                 //'class' => ActionColumn::className(),
                 //'urlCreator' => function ($action, Cliente $model, $key, $index, $column) {
                     //return Url::toRoute([$action, 'id' => $model->id]);
                  //}
-            ],
+            ],*/
         ],
     ]); ?>
+
+<style>
+    .table
+    {
+        color:black;
+        background-color: white;
+        text-align: center;
+    }
+
+    .filters
+    {
+        background-color: #243a40;
+    }
+
+    table>thead>tr>th>a
+    {
+        color:white;
+    }
+
+    table>p
+    {
+        color:black;
+    }
+    
+    body {
+        background-image: url("../../../css/fondo.png");
+        background-attachment: fixed;
+    }
+
+    .colorizado table thead 
+    {
+        background-color: #343a40;
+    }
+
+    .h1
+    {
+        color:black;
+    }
+
+</style>
 
 
 </div>

@@ -33,3 +33,23 @@ $this->title = "No Iniciado";
     </p>
 
 </div>
+
+
+<style>
+    body {
+        background-image: url("../../../css/fondo.png");
+        background-attachment: fixed;
+        color: white;
+    }
+
+    .colorizado table thead 
+    {
+        background-color: #343a40;
+    }
+
+    h1
+    {
+        color: black;
+    }
+</style>
+

@@ -19,16 +19,19 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <br>
     <p>
-        <?= Html::a('Crear nuevo Turno', ['create'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Crear Turno', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'showHeader' => false,
+        //'showHeader' => false,
         'summary' => '',
-        //'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
+        'options' => [
+            'class' => 'colorizado',
+         ],
         'columns' => [
            // ['class' => 'yii\grid\SerialColumn'],
 
@@ -43,7 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'estado',
             //No results found.
             [
-                'class' => ActionColumn::className(),
+                //'class' => ActionColumn::className(),
+                'class' => 'yii\grid\ActionColumn',
+                //'header'=>"Ver",
+                'template' => '{view}',
                 'urlCreator' => function ($action, Turno $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
@@ -53,27 +59,37 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
+
 <style>
     .table
     {
         color:black;
+        background-color: white;
+        text-align: center;
     }
 
     .filters
     {
-        background-color: green;
+        background-color: #243a40;
     }
 
     table>thead>tr>th>a
     {
+        color:white;
+    }
+
+    table>p
+    {
         color:black;
     }
-
-    table>a
-    {
-        color:green;
+    
+    body {
+        background-image: url("../../../css/fondo.png");
+        background-attachment: fixed;
     }
 
+    .colorizado table thead 
+    {
+        background-color: #343a40;
+    }
 </style>
-
-<script></script>

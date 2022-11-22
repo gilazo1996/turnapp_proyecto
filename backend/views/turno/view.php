@@ -17,12 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+        <?= Html::a('Dar de baja', ['', 'id' => $model->id], [
             'class' => 'btn btn-danger',
-            'data' => [
+            /*'data' => [
                 'confirm' => 'Seguro desea eliminar este turno?',
                 'method' => 'post',
-            ],
+            ],*/
         ]) ?>
     </p>
 
@@ -45,3 +45,33 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+
+<style>
+    .table
+    {
+        color:black;
+        background-color: white;
+        text-align: center;
+    }
+
+    .filters
+    {
+        background-color: #243a40;
+    }
+
+    table>thead>tr>th>a
+    {
+        color:white;
+    }
+
+    table>p
+    {
+        color:black;
+    }
+    
+    body {
+        background-image: url("../../../css/fondo.png");
+        background-attachment: fixed;
+    }
+</style>
