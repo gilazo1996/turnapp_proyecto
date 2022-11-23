@@ -1,4 +1,5 @@
 <?php
+
 // Include configuration file
 require_once 'google_config.php';
 
@@ -52,9 +53,15 @@ if ($gClient->getAccessToken()) {
         //$output .= '<p><b>Locale:</b> '.$userData['locale'].'</p>';
         //$output .= '<p><b>Logged in with:</b> Google</p>';
        // $output .= '<p><a href="'.$userData['link'].'" target="_blank">Click to visit Google+</a></p>';
-        $output .= '<p> <a href="http://localhost/turnapp_proyecto/backend/web/">Ir a la pagina principal</a></p>';
-        $output .= '<br> <p><a href="logout.php">Cerrar sesion</a></p>';
-        $output .= '</div>';
+       $output .= '</div>';
+
+       $output .= '<div class="">';
+       $output .= '<br>';
+       $output .= '<a href="http://localhost/turnapp_proyecto/backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
+       $output .= '<br> <br> <br>';
+       $output .= '<a href="http://localhost/turnapp_proyecto/logout.php" class="btn btn-danger">Cerrar sesion</a>';
+       $output .= '</div>';
+
     } else {
         $output = '<h3 style="color:red">Hubo un error, intente de nuevo.</h3>';
     }
@@ -100,3 +107,10 @@ if ($gClient->getAccessToken()) {
     </div>
 </footer>
 </html>
+
+<style>
+    body {
+        background-image: url("css/fondo.png");
+        background-attachment: fixed;
+    }
+</style>
