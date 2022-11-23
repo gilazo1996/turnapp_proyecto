@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "turno".
  *
  * @property int $id
- * @property int $id_paciente
+ * @property int $id_cliente
  * @property int $id_profesional
  * @property int|null $id_sala
  * @property string|null $codigo_turno
@@ -35,13 +35,13 @@ class Turno extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_paciente', 'id_profesional', 'prioridad', 'estado'], 'required'],
-            [['id_paciente', 'id_profesional', 'id_sala', 'prioridad'], 'integer'],
+            [['id_cliente', 'id_profesional', 'prioridad', 'estado'], 'required'],
+            [['id_cliente', 'id_profesional', 'id_sala', 'prioridad'], 'integer'],
             [['fecha_turno'], 'required'],
             [['codigo_turno'], 'string', 'max' => 15],
             [['detalle'], 'string', 'max' => 140],
             [['estado'], 'string', 'max' => 50],
-            [['id_paciente'], 'integer'],
+            [['id_cliente'], 'integer'],
             [['horario'], 'required'],
             [['ambito'], 'string', 'max' => 20],
         ];
@@ -54,7 +54,7 @@ class Turno extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_paciente' => 'Cliente',
+            'id_cliente' => 'Cliente',
             'id_profesional' => 'Profesional',
             'id_sala' => 'Sala',
             'codigo_turno' => 'Codigo del turno',

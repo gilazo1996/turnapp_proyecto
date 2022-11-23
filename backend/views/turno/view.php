@@ -24,17 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             //'id',
-            'id_paciente',
-            'id_profesional',
+            'cliente',
+            //'id_profesional',
+            'nombre_profesional',
            // 'id_sala',
            // 'codigo_turno',
             
             'fecha_turno',
             'horario',
             //'prioridad',
-            'estado',
             'ambito',
-            'detalle',
+            'estado',
         ],
     ]) ?>
 
@@ -164,3 +164,48 @@ function closeForm() {
         background-attachment: fixed;
     }
 </style>
+
+
+<!--Colorear tabla-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+td:last-child {
+  border-right: 0px;
+}
+.green {
+  background-color: #D5F5E3 !important;
+}
+
+.white {
+  background-color: white !important;
+}
+
+.red {
+  background-color: #F5B7B1 !important;
+}
+.blue {
+  background-color: #AED6F1 !important;
+}
+</style>
+
+<script>
+    function changeColor() 
+    {
+        var td = $(".myTable" + " td");
+        $.each(td, function(i) {
+        
+            if ($(td[i]).html() == 'pendiente') {
+            $(td[i]).addClass("blue");
+            } else if ($(td[i]).html() == 'cancelado'){
+            $(td[i]).addClass("red");
+            }else if ($(td[i]).html() == 'finalizado'){
+            $(td[i]).addClass("green");
+            }
+            
+        });
+    }
+
+changeColor();
+</script>
+<!--Colorear tabla-->

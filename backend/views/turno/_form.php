@@ -28,8 +28,6 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_paciente')->dropDownList(($cliente), ['prompt' => 'Seleccione el cliente' ]); ?>
-
     <?= $form->field($model, 'id_profesional')->dropDownList((ArrayHelper::map(Profesional::find()->all(), 'id', 'nombre')), ['prompt' => 'Seleccione el profesional' ]); ?>
 
     <?= $form->field($model, 'fecha_turno')->widget(\yii\jui\DatePicker::className(), [

@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'summary' => '',
+        'tableOptions' => ['class' => 'table table-striped table-hover table-borderless myTable'],
         'options' => [
             'class' => 'colorizado',
         ],
@@ -91,3 +92,49 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
+
+
+<!--Colorear tabla-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+td:last-child {
+  border-right: 0px;
+}
+.green {
+  background-color: #D5F5E3 !important;
+}
+
+.white {
+  background-color: white !important;
+}
+
+.yellow {
+  background-color: #FCF3CF !important;
+}
+.blue {
+  background-color: #AED6F1 !important;
+}
+</style>
+
+<script>
+    function changeColor() 
+    {
+        var td = $(".myTable" + " td");
+        $.each(td, function(i) {
+        
+            if ($(td[i]).html() == 'Proveedor') {
+            $(td[i]).addClass("blue");
+            } else if ($(td[i]).html() == 'Admin'){
+            $(td[i]).addClass("yellow");
+            }else if ($(td[i]).html() == 'Cliente'){
+            $(td[i]).addClass("green");
+            }
+            
+        });
+    }
+
+changeColor();
+</script>
+<!--Colorear tabla-->

@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class' => 'table table-striped table-hover table-borderless myTable'],
         'summary' => '',
         'options' => [
             'class' => 'colorizado',
@@ -35,15 +36,15 @@ $this->params['breadcrumbs'][] = $this->title;
            // ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'id_paciente',
+            'cliente',
             //'id_sala',
             //'codigo_turno',
             //'detalle',
             'fecha_turno',
             'horario',
             //'prioridad',
+            'nombre_profesional',
             'estado',
-            'id_profesional',
             //No results found.
         ],
     ]); ?>
@@ -85,3 +86,48 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 
 <script></script>
+
+
+<!--Colorear tabla-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+td:last-child {
+  border-right: 0px;
+}
+.green {
+  background-color: #D5F5E3 !important;
+}
+
+.white {
+  background-color: white !important;
+}
+
+.red {
+  background-color: #F5B7B1 !important;
+}
+.blue {
+  background-color: #AED6F1 !important;
+}
+</style>
+
+<script>
+    function changeColor() 
+    {
+        var td = $(".myTable" + " td");
+        $.each(td, function(i) {
+        
+            if ($(td[i]).html() == 'pendiente') {
+            $(td[i]).addClass("blue");
+            } else if ($(td[i]).html() == 'cancelado'){
+            $(td[i]).addClass("red");
+            }else if ($(td[i]).html() == 'finalizado'){
+            $(td[i]).addClass("green");
+            }
+            
+        });
+    }
+
+changeColor();
+</script>
+<!--Colorear tabla-->

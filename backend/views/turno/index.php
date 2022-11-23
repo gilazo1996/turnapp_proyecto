@@ -29,14 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
         //'showHeader' => false,
         'summary' => '',
         'filterModel' => $searchModel,
+        'tableOptions' => ['class' => 'table table-striped table-hover table-borderless myTable'],
         'options' => [
-            'class' => 'colorizado',
+            'class' => 'colorizado'
          ],
         'columns' => [
            // ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            //'id_paciente',
+            //'id_cliente',
            // 'id_profesional',
             //'id_sala',
             //'codigo_turno',
@@ -71,6 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
     .filters
     {
         background-color: #243a40;
+        border-radius: 20px;
     }
 
     table>thead>tr>th>a
@@ -90,7 +92,52 @@ $this->params['breadcrumbs'][] = $this->title;
 
     .colorizado table thead 
     {
-        background-color: #343a40;
+        background-color: #343a40;        
+        border-radius: 20px;
     }
 
 </style>
+
+<!--Colorear tabla-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+td:last-child {
+  border-right: 0px;
+}
+.green {
+  background-color: #D5F5E3 !important;
+}
+
+.white {
+  background-color: white !important;
+}
+
+.red {
+  background-color: #F5B7B1 !important;
+}
+.blue {
+  background-color: #AED6F1 !important;
+}
+</style>
+
+<script>
+    function changeColor() 
+    {
+        var td = $(".myTable" + " td");
+        $.each(td, function(i) {
+        
+            if ($(td[i]).html() == 'pendiente') {
+            $(td[i]).addClass("blue");
+            } else if ($(td[i]).html() == 'cancelado'){
+            $(td[i]).addClass("red");
+            }else if ($(td[i]).html() == 'finalizado'){
+            $(td[i]).addClass("green");
+            }
+            
+        });
+    }
+
+changeColor();
+</script>
+<!--Colorear tabla-->

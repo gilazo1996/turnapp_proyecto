@@ -18,7 +18,7 @@ class ClienteSearch extends Cliente
     {
         return [
             [['id', 'dni'], 'integer'],
-            [['nombre', 'apellido', 'email', 'fecha_nacimiento'], 'safe'],
+            [['nombre', 'apellido', 'email', 'fecha_nacimiento','rol','cliente','nombre_profesional'], 'safe'],
         ];
     }
 
