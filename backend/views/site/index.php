@@ -60,16 +60,10 @@ $this->title = Yii::$app->name;
 
 </div>
 
-<a href="http://localhost/turnapp_proyecto/index.php" class="login-a">iniciar sesion</a>
-
 <style>
     body {
         background-image: url("../../css/fondo.png");
         background-attachment: fixed;
-    }
-    .login-a
-    {
-        color: yellow;
     }
 </style>
 
