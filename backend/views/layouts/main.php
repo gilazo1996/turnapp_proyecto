@@ -40,7 +40,7 @@ AppAsset::register($this);
     ];
     if (Yii::$app->user->isGuest) {
         //$menuItems[] = ['label' => 'Iniciar', 'url' => ['/site/login']];
-        $menuItems[] = ['label' => 'Usuario', 'url' => ['../../']];
+        //$menuItems[] = ['label' => 'Usuario', 'url' => ['../../']];
     }     
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
