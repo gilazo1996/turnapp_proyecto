@@ -70,11 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     .filters
     {
-<<<<<<< HEAD
         background-color: #243a40;
-=======
-        background-color: green;
->>>>>>> login2
     }
 
     table>thead>tr>th>a
@@ -94,11 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     .colorizado table thead 
     {
-<<<<<<< HEAD
         background-color: #343a40;
-=======
-        color:green;
->>>>>>> login2
     }
 
 </style>

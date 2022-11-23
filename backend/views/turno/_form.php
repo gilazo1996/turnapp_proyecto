@@ -44,8 +44,6 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
 
     <?= $form->field($model, 'horario')->dropDownList((ArrayHelper::map(Horario::find()->all(), 'id', 'hora')), ['prompt' => 'Seleccione el horario' ]); ?>
 
-    <?= $form->field($model, 'horario')->dropDownList(($horario), ['prompt' => 'Seleccione el horario' ]); ?>
-
     <?= $form->field($model, 'ambito')->dropDownList(($ambito), ['prompt' => 'Seleccione el ambito' ]); ?>
 
     <?= $form->field($model, 'detalle')->textInput(['maxlength' => true, 'placeholder' => 'Agregue sus notas personales']); ?>  
