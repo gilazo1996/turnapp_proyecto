@@ -48,7 +48,7 @@ AppAsset::register($this);
     ]);
     if (Yii::$app->user->isGuest) {
         //echo Html::tag('div',Html::a('Perfil',['*'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
-        echo Html::tag('div',Html::a('Cerrar Sesion',['../../logout.php'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+        echo Html::tag('div',Html::a('Mi perfil',['../../index.php'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
     } else {
         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
             . Html::submitButton(
