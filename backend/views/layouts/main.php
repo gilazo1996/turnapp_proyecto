@@ -40,15 +40,15 @@ AppAsset::register($this);
     ];
     if (Yii::$app->user->isGuest) {
         //$menuItems[] = ['label' => 'Iniciar', 'url' => ['/site/login']];
-        $menuItems[] = ['label' => 'Usuario', 'url' => ['*']];
+        $menuItems[] = ['label' => 'Usuario', 'url' => ['../../']];
     }     
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,
     ]);
     if (Yii::$app->user->isGuest) {
-        echo Html::tag('div',Html::a('Perfil',['*'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
-        echo Html::tag('div',Html::a('Iniciar Sesion',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+        //echo Html::tag('div',Html::a('Perfil',['*'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+        echo Html::tag('div',Html::a('Mi perfil',['../../index.php'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
     } else {
         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
             . Html::submitButton(
