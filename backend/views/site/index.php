@@ -8,6 +8,7 @@ use yii\bootstrap4\Html;
 
 
 $this->title = Yii::$app->name;
+//echo $_SESSION['userData'];
 ?>
 
 <?php //var_dump(Url::toRoute(["turno/index"])); die; ?>
@@ -15,7 +16,7 @@ $this->title = Yii::$app->name;
 <div class="site-index" style="margin-bottom: 0%;">
 
     <div class="jumbotron text-center bg-transparent" style="padding-bottom: 0%;">
-        <h1 class="display-4">Bienvenido!</h1>
+        <h1 class="display-4">Bienvenido! <?php echo $_SESSION['userData']['first_name']; ?></h1>
 
         <p class="lead">Sistema y Gestión de Turnos.</p>
     </div>
