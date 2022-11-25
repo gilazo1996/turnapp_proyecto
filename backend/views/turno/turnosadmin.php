@@ -1,5 +1,15 @@
 <?php
 
+//CUIDADO, CODIGO INESTABLE
+if(!isset($_SESSION)) 
+{ 
+    session_name('s');
+    session_set_cookie_params(0, '/');
+    session_start(); 
+} 
+//CUIDADO, CODIGO INESTABLE
+
+
 use backend\models\Turno;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -13,6 +23,37 @@ use yii\grid\GridView;
 $this->title = 'Turnos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
+<?php 
+            $mostrar=0;
+
+            echo "<br>";
+            $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
+            $sql = mysqli_query($conn,"SELECT * FROM usuarios");
+
+            $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
+
+            if ($filaSql["rol"] == "admin")
+            {
+                echo " <h1> USUARIO: " . $_SESSION['userData']['first_name'].
+                "<br> ROL: ADMIN </h1>"; 
+
+                $mostrar=1;
+            }
+            else 
+            {
+                echo " <h1> USUARIO: " . $_SESSION['userData']['first_name'].
+                "<br> ROL: CLIENTE <br>
+                ERROR: PAGINA DE ADMIN</h1>"; 
+
+            }
+        ?> 
+
+
+<?php if ( $mostrar==1 ) { ?> 
+
+
 <div class="turno-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -59,6 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
+<?php } ?>
 
 <style>
     .table

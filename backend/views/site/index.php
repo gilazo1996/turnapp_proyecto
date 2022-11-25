@@ -1,4 +1,13 @@
 <?php
+//CUIDADO, CODIGO INESTABLE
+if(!isset($_SESSION)) 
+{ 
+    session_name('s');
+    session_set_cookie_params(0, '/');
+    session_start(); 
+} 
+//CUIDADO, CODIGO INESTABLE
+
 use yii\helpers\Url;
 use yii\bootstrap4\Html;
 /** @var yii\web\View $this */
@@ -15,7 +24,7 @@ $this->title = Yii::$app->name;
 <div class="site-index" style="margin-bottom: 0%;">
 
     <div class="jumbotron text-center bg-transparent" style="padding-bottom: 0%;">
-        <h1 class="display-4">Bienvenido!</h1>
+    <h1 class="display-4">Bienvenido! <?php echo $_SESSION['userData']['first_name']; ?></h1>
 
         <p class="lead">Sistema y Gestión de Turnos.</p>
     </div>
