@@ -15,10 +15,14 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\data\SqlDataProvider;
 
 /** @var yii\web\View $this */
 /** @var backend\models\TurnoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+
+use yii\data\ActiveDataProvider;
 
 $this->title = 'Turnos';
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,10 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php 
             $mostrar=0;
+            $id = $_SESSION['userData']['oauth_uid'];
 
             echo "<br>";
             $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
-            $sql = mysqli_query($conn,"SELECT * FROM usuarios");
+            $sql = mysqli_query($conn," SELECT * FROM usuarios WHERE oauth_uid = '$id' ");
 
             $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
 
@@ -46,6 +51,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 echo " <h1> USUARIO: " . $_SESSION['userData']['first_name'].
                 "<br> ROL: CLIENTE <br>
                 ERROR: PAGINA DE ADMIN</h1>"; 
+
+                echo "<h1>" . $filaSql["rol"] .
+                "<br></h1>"; 
 
             }
         ?> 
@@ -65,11 +73,53 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+
+
+    
+<?php
+
+$clave = "22";
+
+
+//$sql = new SqlDataProvider(['sql' => 'SELECT * FROM turno ']);
+//$sql = new SqlDataProvider(['sql' => 'SELECT * FROM turno WHERE oauth_uid = @clave']);
+//$sql = 'SELECT * FROM turno';
+//$sql = 'SELECT * FROM turno WHERE oauth_uid = @clave';
+//$sql = 'SELECT * FROM turno WHERE oauth_uid = $clave';
+//$sql = 'SELECT * FROM turno WHERE oauth_uid = "$clave"';
+//$sql = 'SELECT * FROM turno WHERE oauth_uid = :clave';
+$sql = 'SELECT * FROM turno WHERE oauth_uid = 22';
+//$sql = 'SELECT * FROM turno WHERE oauth_uid = "22"';
+//$sql = mysqli_query("SELECT * FROM turno WHERE oauth_uid = '$clave'");
+$dataProvider = new SqlDataProvider(['sql' => $sql]);
+
+
+//$sqld = mysqli_query("SELECT * FROM turno WHERE oauth_uid = '$clave'");
+//var_dump($clave);
+/*
+  $sq = new SqlDataProvider([
+    'sql' => 'SELECT Name, Title, COUNT(ArticleTags.ID) AS TagCount ' . 
+             'FROM Authors ' .
+             'INNER JOIN Articles ON (Authors.ID = Articles.AuthorID) ' .
+             'INNER JOIN ArticleTags ON (Articles.ID = ArticleTags.ID) ' .
+             'WHERE Name=:author' .
+             'GROUP BY ArticleID',
+    'params' => [':author' => 'Arno Slatius'],
+]);
+*/
+?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        //$sql = mysqli_query($conn," SELECT * FROM usuarios WHERE oauth_uid = '$id' "),
+        //'dataProvider' => $sq,
+        
+
+
         'filterModel' => $searchModel,
         'summary' => '',
         'tableOptions' => ['class' => 'table table-striped table-hover table-borderless myTable'],
+   
         'options' => [
             'class' => 'colorizado',
          ],
@@ -87,14 +137,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'prioridad',
             'estado',
             //No results found.
-            [
+           /* [
                 'class' => ActionColumn::className(),
                 //'header'=>"Ver",
                 'template' => '{view}',
                 'urlCreator' => function ($action, Turno $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
-            ],
+            ],*/
         ],
     ]); ?>
 
