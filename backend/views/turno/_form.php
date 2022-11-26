@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+//namespace backend\models;
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -11,17 +11,25 @@ use yii\helpers\Url;
 /** @var yii\widgets\ActiveForm $form */
 
 use yii\helpers\ArrayHelper;
+use backend\models\Profesional;
+use backend\models\Horario;
 
-//arrays provisorios...
-$cliente = ['0'=>'Juan Maswick'];
-//$profesional = ['0'=>'PEREZ, Ivan', '1'=>'BONFIRE, Esther'];
-//$sala = ['0'=>'001', '1'=>'002'];
-/*$horario = ['0'=> '06:00','1'=> '07:00','2'=> '08:00','3'=> '09:00'
-,'4'=> '10:00','5'=> '11:00','6'=> '12:00','7'=> '13:00','8'=> '14:00'
-,'9'=> '15:00','10'=> '16:00','11'=> '17:00','12'=> '18:00','13'=> '19:00'
-,'14'=> '20:00','15'=> '21:00','16'=> '22:00'];*/
+require "../../rbac/control.php";
+require "../../rbac/errores.php";
+
 $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
 ?>
+
+<?php 
+    $mostrar=0;
+    $id_google = $_SESSION['userData']['oauth_uid'];
+    $cliente = $_SESSION['userData']['first_name'];
+    $mostrar = mostrar($id_google); 
+?>
+
+<!--cliente-->
+<?php if ( $mostrar==1 ) { ?>
+    <?= "<h2>Cliente: " .$cliente."</h2>"?>
 
 <br>
 <div class="turno-form">
@@ -55,6 +63,29 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php } ?>
+
+<!--admin-->
+<?php if ( $mostrar==2) { ?>
+
+<br>
+<div class="turno-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'estado')->textInput(['maxlength' => true, 'placeholder' => 'Cambie el estado del turno']); ?>  
+    
+    <div class="form-group">
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <a href="<?php echo Url::toRoute(["turno/turnosadmin"]);?>" class="btn btn-danger">Cancelar</a>
+    </div>
+    <?php ActiveForm::end(); ?>
+
+</div>
+
+<?php } ?>
+
 
 <style>  
     label

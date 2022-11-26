@@ -11,14 +11,53 @@ $this->params['breadcrumbs'][] = ['label' => 'Turnos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+
+<?php 
+    $mostrar=0;
+    $id_google = $_SESSION['userData']['oauth_uid'];
+
+    $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
+    $sql = mysqli_query($conn," SELECT * FROM usuarios WHERE oauth_uid = '$id_google' ");
+
+    $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
+
+    if ($filaSql["rol"] == "cliente")
+    {
+        $mostrar=1;
+    }
+    else if ($filaSql["rol"] == "admin")
+    {
+        $mostrar=2;
+    }
+?>
+
 <div class="turno-view">
-
     <h1><?= Html::encode($this->title) ?></h1>
+</div>
 
+<?php if ( $mostrar==1 ) { ?>
+
+<div class="turno-view">
     <p>
         <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         
     </p>
+</div>
+
+<?php } ?>
+
+<?php if ( $mostrar==2) { ?>
+
+<div class="turno-view">
+    <p>
+        <?= Html::a('Cambiar estado', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    </p>
+</div>
+
+<?php } ?>
+
+
+<div class="turno-view">
 
     <?= DetailView::widget([
         'model' => $model,
@@ -40,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-
+<?php if ( $mostrar==1 ) { ?>
 
 <!--HTML FORMULARIO POPUP-->
 
@@ -59,6 +98,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <button type="button" class="btn cancel" onclick="closeForm()">Cerrar</button>
   </form>
 </div>
+
+<?php } ?>
+
 
 <!--CSS-->
 <style>

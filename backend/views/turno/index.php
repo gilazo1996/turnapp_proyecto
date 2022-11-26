@@ -1,64 +1,43 @@
 <?php
-//CUIDADO, CODIGO INESTABLE
-if(!isset($_SESSION)) 
-{ 
-    session_name('s');
-    session_set_cookie_params(0, '/');
-    session_start(); 
-} 
-//CUIDADO, CODIGO INESTABLE
-
 use backend\models\Turno;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\data\SqlDataProvider;
+
+require "../../rbac/control.php";
+require "../../rbac/errores.php";
+require "../../rbac/conexion.php";
 
 /** @var yii\web\View $this */
 /** @var backend\models\TurnoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
+use yii\data\ActiveDataProvider;
+
 $this->title = 'Turnos';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
+
+<?php //rbac, redireccion si el usuario no es cliente
+    $id_google = $_SESSION['userData']['oauth_uid'];
+    $mostrar = mostrar($id_google); 
+    if ($mostrar==2) errorCliente();
+?>
+
+<?php if ( $mostrar==1 ) { ?>
+
 <div class="turno-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1> <br>
+    <?= Html::a('Crear Turno', ['create'], ['class' => 'btn btn-primary'])?> <br> <br>
 
-    <h2> 
-        <?php 
-            $mostrar=0;
-
-            echo $_SESSION['userData']['first_name']; 
-            echo "<br>";
-            $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
-            $sql = mysqli_query($conn,"SELECT * FROM usuarios");
-
-            $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
-
-            if ($filaSql["rol"] == "cliente")
-            {
-                echo "<br> Rol: CLIENTE";
-                $mostrar = 1;
-            }
-            else 
-            {
-                echo "<br> ERROR, Rol: ADMIN";
-            }
-        ?> 
-    </h2>
-    
-    <br>
-    <p>
-
-    <?= $is_admin = ($mostrar == 1) ? 
-        Html::a('Crear Turno', ['create'], ['class' => 'btn btn-primary'])  
-        : false;
-    ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<?php
+    $sql = conectar($id_google);
+    $dataProvider = new SqlDataProvider(['sql' => $sql]);
+?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -82,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'prioridad',
             'estado',
             //No results found.
-            [
+           /* [
                 //'class' => ActionColumn::className(),
                 'class' => 'yii\grid\ActionColumn',
                 //'header'=>"Ver",
@@ -90,12 +69,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'urlCreator' => function ($action, Turno $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
-            ],
+            ],*/
         ],
     ]); ?>
 
 </div>
 
+<?php } ?>
 
 <style>
     .table

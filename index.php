@@ -1,12 +1,11 @@
 <?php
-//CUIDADO, CODIGO INESTABLE
-if(!isset($_SESSION)) 
-{ 
-    session_name('s');
-    session_set_cookie_params(0, '/');
-    session_start(); 
-} 
-//CUIDADO, CODIGO INESTABLE
+
+ if (!session_id()) 
+ {
+     session_id('s');
+     session_set_cookie_params(0, "/");
+     session_start();
+}
 
 // Include configuration file
 require_once 'google_config.php';
@@ -49,6 +48,13 @@ if ($gClient->getAccessToken()) {
     // Storing user data in the session
     $_SESSION['userData'] = $userData;
     
+    $id_google = $_SESSION['userData']['oauth_uid'];
+
+    $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
+    $sql = mysqli_query($conn," SELECT * FROM usuarios WHERE oauth_uid = '$id_google' ");
+
+    $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
+
     // Render user profile data
     if (!empty($userData)) {
         $output  = '<h1>Su perfil</h1>';
@@ -65,7 +71,18 @@ if ($gClient->getAccessToken()) {
 
        $output .= '<div class="">';
        $output .= '<br>';
-       $output .= '<a href="http://localhost/turnapp_proyecto/backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
+
+       if ($filaSql["rol"] == "cliente")
+       {
+            $output .= '<a href="http://localhost/turnapp_proyecto/backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
+       }
+       else
+       {
+            $output .= '<a href="http://localhost/turnapp_proyecto/backend/web/site/indexadmin" class="btn btn-primary">Ir a la pagina principal</a>';
+       }
+
+       //$output .= '<a href="http://localhost/turnapp_proyecto/backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
+      
        $output .= '<br> <br> <br>';
        $output .= '<a href="http://localhost/turnapp_proyecto/logout.php" class="btn btn-danger">Cerrar sesion</a>';
        $output .= '</div>';
@@ -88,7 +105,7 @@ if ($gClient->getAccessToken()) {
 <html>
 <head>
 <meta charset="utf-8">
-<title>logeophp</title>
+<title>Turnapp - Login</title>
 <link rel="stylesheet" href="css/style.css"/>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 

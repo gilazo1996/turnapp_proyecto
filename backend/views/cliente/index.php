@@ -1,10 +1,12 @@
 <?php
-
 use backend\models\Cliente;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+
+require "../../rbac/control.php";
+require "../../rbac/errores.php";
 
 /** @var yii\web\View $this */
 /** @var backend\models\ClienteSearch $searchModel */
@@ -13,6 +15,15 @@ use yii\grid\GridView;
 $this->title = 'Lista de usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php //rbac, redireccion si el usuario no es admin
+    $id_google = $_SESSION['userData']['oauth_uid'];
+    $mostrar = mostrar($id_google); 
+    if ($mostrar==1) errorAdmin();
+?>
+
+<?php if ( $mostrar==2 ) { ?>
+
 <div class="cliente-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -23,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -35,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
            /* ['class' => 'yii\grid\SerialColumn'],
 
             'id',*/
-            'dni',
+            /*'dni',*/
             'nombre',
             'apellido',
             'email',
@@ -49,6 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],*/
         ],
     ]); ?>
+
+<?php } ?>
 
 <style>
     .table

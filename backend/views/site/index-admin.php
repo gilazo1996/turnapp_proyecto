@@ -3,10 +3,19 @@ use yii\helpers\Url;
 use yii\bootstrap4\Html;
 /** @var yii\web\View $this */
 
+require "../../rbac/control.php";
+require "../../rbac/errores.php";
+
 $this->title = Yii::$app->name;
 ?>
 
-<?php //var_dump(Url::toRoute(["turno/index"])); die; ?>
+<?php //rbac, redireccion si el usuario no es admin
+    $id_google = $_SESSION['userData']['oauth_uid'];
+    $mostrar = mostrar($id_google); 
+    if ($mostrar==1) errorAdmin();
+?>
+
+<?php if ( $mostrar==2 ) { ?>
 
 <div class="site-index" style="margin-top: 0%;">
 
@@ -89,6 +98,8 @@ $this->title = Yii::$app->name;
     </div>
     
 </div>
+
+<?php } ?>
 
 <style>
     body {
