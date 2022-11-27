@@ -13,3 +13,11 @@
     </html>
 <?php
 } ?>
+
+<?php function errorAutorizacion() {
+    ?>
+    <html>
+    <meta http-equiv="refresh" content="0; URL='http://localhost/turnapp_proyecto/errorAutorizacion.php'" />
+    </html>
+<?php
+} ?>

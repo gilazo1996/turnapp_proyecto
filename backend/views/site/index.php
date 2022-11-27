@@ -1,10 +1,14 @@
 <?php
+require "../../rbac/sesion.php";
+$esInvitado = sesion();
+$mostrar;
 
+/*
 if (!session_id()) {
     session_id('s');
     session_set_cookie_params(0, "/");
     session_start();
-}
+}*/
 
 use yii\helpers\Url;
 use yii\bootstrap4\Html;
@@ -14,18 +18,29 @@ require "../../rbac/control.php";
 require "../../rbac/errores.php";
 
  //rbac, redireccion si el usuario no es cliente
-    $id_google = $_SESSION['userData']['oauth_uid'];
+    /*$id_google = $_SESSION['userData']['oauth_uid'];
     $mostrar = mostrar($id_google); 
-    if ($mostrar==2) errorCliente();
+    if ($mostrar==2) errorCliente();*/
 
 
 $this->title = Yii::$app->name;
 ?>
 
+<?php //rbac, redireccion si el usuario no es admin
+$nombre_="";
+if (isset($_SESSION['userData']))
+{
+    $id_google = $_SESSION['userData']['oauth_uid'];
+    $mostrar = mostrar($id_google); 
+    if ($mostrar==2) errorCliente();
+    $nombre_ = $_SESSION['userData']['first_name'];
+}
+?>
+
 <div class="site-index" style="margin-bottom: 0%;">
 
     <div class="jumbotron text-center bg-transparent" style="padding-bottom: 0%;">
-    <h1 class="display-4">Bienvenido <?php echo $_SESSION['userData']['first_name']; ?></h1>
+    <h1 class="display-4">Bienvenido <?php echo $nombre_; ?></h1>
 
         <p class="lead">Sistema y Gestión de Turnos.</p>
     </div>

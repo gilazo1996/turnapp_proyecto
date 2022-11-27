@@ -1,4 +1,8 @@
 <?php
+require "../../rbac/sesion.php";
+$esInvitado = sesion();
+$mostrar=0;
+
 use yii\helpers\Url;
 use yii\bootstrap4\Html;
 /** @var yii\web\View $this */
@@ -10,9 +14,12 @@ $this->title = Yii::$app->name;
 ?>
 
 <?php //rbac, redireccion si el usuario no es admin
+if (isset($_SESSION['userData']))
+{
     $id_google = $_SESSION['userData']['oauth_uid'];
     $mostrar = mostrar($id_google); 
     if ($mostrar==1) errorAdmin();
+}
 ?>
 
 <?php if ( $mostrar==2 ) { ?>

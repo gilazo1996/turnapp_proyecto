@@ -1,4 +1,8 @@
 <?php
+require "../../rbac/sesion.php";
+$esInvitado = sesion();
+$mostrar=0;
+
 use backend\models\Turno;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -21,9 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?php //rbac, redireccion si el usuario no es admin
+
+if (isset($_SESSION['userData']))
+{
     $id_google = $_SESSION['userData']['oauth_uid'];
     $mostrar = mostrar($id_google); 
     if ($mostrar==1) errorAdmin();
+}
 ?>
 
 <?php if ( $mostrar==2 ) { ?>

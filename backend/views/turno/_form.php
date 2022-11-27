@@ -1,5 +1,7 @@
 <?php
-
+require "../../rbac/sesion.php";
+$esInvitado = sesion();
+$mostrar;
 //namespace backend\models;
 
 use yii\helpers\Html;
@@ -22,9 +24,12 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
 
 <?php 
     $mostrar=0;
+    if (isset($_SESSION['userData']))
+{
     $id_google = $_SESSION['userData']['oauth_uid'];
     $cliente = $_SESSION['userData']['first_name'];
     $mostrar = mostrar($id_google); 
+}
 ?>
 
 <!--cliente-->

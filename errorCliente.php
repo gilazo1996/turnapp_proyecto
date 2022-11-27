@@ -1,5 +1,5 @@
 <?php
-    $output = '<a href="http://localhost/turnapp_proyecto/backend/web/site/indexadmin" class="btn btn-primary">Ir a la pagina principal</a>';
+    $output = '<a href="backend/web/site/indexadmin" class="btn btn-primary">Ir a la pagina principal</a>';
 ?>
 
 <!DOCTYPE html>

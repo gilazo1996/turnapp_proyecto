@@ -1,4 +1,9 @@
 <?php
+require "../../rbac/errores.php";
+require "../../rbac/sesion.php";
+$esInvitado = sesion();
+$mostrar=1;
+$ocultar=0;
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -13,14 +18,19 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?php 
-    $mostrar=0;
+  
+
+    if (isset($_SESSION['userData']))
+    {
     $id_google = $_SESSION['userData']['oauth_uid'];
 
     $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
     $sql = mysqli_query($conn," SELECT * FROM usuarios WHERE oauth_uid = '$id_google' ");
 
     $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
+    $mostrar=1;
 
+    
     if ($filaSql["rol"] == "cliente")
     {
         $mostrar=1;
@@ -29,13 +39,36 @@ $this->params['breadcrumbs'][] = $this->title;
     {
         $mostrar=2;
     }
+
+    //deteccion y ocultacion de informacion
+    if ($mostrar==1 && ($_SESSION['userData']['oauth_uid'] != $model["oauth_uid"]))
+    {
+      /*echo "alto ahi". "<br>";
+      echo "id de turno: ". $model["oauth_uid"]. "<br>";
+      echo "su id: ".$_SESSION['userData']['oauth_uid'];*/
+      $ocultar=1;
+      errorAutorizacion();
+    }
+
+
+   
+  }
+  else
+    $ocultar=1;
+
+ 
 ?>
+
+<?php if (($mostrar==1 && $ocultar==0) || ($mostrar==2 && $ocultar==0)) { ?>
 
 <div class="turno-view">
     <h1><?= Html::encode($this->title) ?></h1>
 </div>
 
-<?php if ( $mostrar==1 ) { ?>
+<?php } ?>
+
+
+<?php if ( $mostrar==1 && $ocultar==0) { ?>
 
 <div class="turno-view">
     <p>
@@ -46,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php } ?>
 
-<?php if ( $mostrar==2) { ?>
+<?php if ( $mostrar==2 && $ocultar==0) { ?>
 
 <div class="turno-view">
     <p>
@@ -55,6 +88,8 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <?php } ?>
+
+<?php if (($mostrar==1 && $ocultar==0) || ($mostrar==2 && $ocultar==0)) { ?>
 
 
 <div class="turno-view">
@@ -79,7 +114,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<?php if ( $mostrar==1 ) { ?>
+<?php } ?>
+
+
+<?php if ( $mostrar==1 && $ocultar==0) { ?>
 
 <!--HTML FORMULARIO POPUP-->
 

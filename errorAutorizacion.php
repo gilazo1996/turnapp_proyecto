@@ -1,5 +1,5 @@
 <?php
-    $output = '<a href="backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
+    $output = '<a href="backend/web/turno/index" class="btn btn-primary">Ir a la pagina principal</a>';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 <div class="container"></div>
 <div class="container colGray">
 <div class="jumbotron text-center bg-transparent">  
-    <div class="card-header"><h1 class="display-4 text-white">Error, la pagina es solo para administradores</h1></div>
+    <div class="card-header"><h1 class="display-4 text-white">Error, no puede acceder a la pagina</h1></div>
     <h2 class="lead text-white"></h2>
 </div>
 </div>

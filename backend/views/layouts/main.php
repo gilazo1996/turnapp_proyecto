@@ -10,13 +10,21 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap5\NavBar;
 
+$mostrar=0;
+$nombre="";
+
+if(isset($_SESSION['userData']) && !empty($_SESSION['userData'])){
+
+
 $id_google = $_SESSION['userData']['oauth_uid'];
+
+
 $conn = new mysqli('localhost', 'root', '', 'turn_app_base');
 $sql = mysqli_query($conn," SELECT rol FROM usuarios WHERE oauth_uid = '$id_google' ");
 
 $filaSql=mysqli_fetch_array($sql, MYSQLI_ASSOC);
 
-$mostrar;
+
 
 if ($filaSql["rol"] == "cliente")
 $mostrar = 1;
@@ -25,6 +33,8 @@ $mostrar = 2;
 
 //rbac, redireccion si el usuario no es admin
     $nombre = $_SESSION['userData']['first_name'];
+
+}
 
 
 AppAsset::register($this);

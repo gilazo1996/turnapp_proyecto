@@ -74,17 +74,17 @@ if ($gClient->getAccessToken()) {
 
        if ($filaSql["rol"] == "cliente")
        {
-            $output .= '<a href="http://localhost/turnapp_proyecto/backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
+            $output .= '<a href="backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
        }
        else
        {
-            $output .= '<a href="http://localhost/turnapp_proyecto/backend/web/site/indexadmin" class="btn btn-primary">Ir a la pagina principal</a>';
+            $output .= '<a href="backend/web/site/indexadmin" class="btn btn-primary">Ir a la pagina principal</a>';
        }
 
        //$output .= '<a href="http://localhost/turnapp_proyecto/backend/web/" class="btn btn-primary">Ir a la pagina principal</a>';
       
        $output .= '<br> <br> <br>';
-       $output .= '<a href="http://localhost/turnapp_proyecto/logout.php" class="btn btn-danger">Cerrar sesion</a>';
+       $output .= '<a href="logout.php" class="btn btn-danger">Cerrar sesion</a>';
        $output .= '</div>';
 
     } else {
@@ -125,11 +125,12 @@ if ($gClient->getAccessToken()) {
 </div>
 </body>
 <footer class="footer mt-auto py-3 text-muted" id="footer">
-    <div class="container">
+  <!--  <div class="container">
         <div class="row">
         <p class="float-start">&copy; Turnapp 2022</p></div>
 
     </div>
+-->
 </footer>
 </html>
 
