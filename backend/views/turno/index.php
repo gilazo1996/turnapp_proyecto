@@ -43,8 +43,15 @@ if (isset($_SESSION['userData']))
 
 <?php
     $sql = conectar($id_google);
-    $dataProvider = new SqlDataProvider(['sql' => $sql]);
+    $dataProvider = new SqlDataProvider([
+        'sql' => $sql,
+        'sort' => [
+            'attributes' => ['fecha_turno','detalle','estado'],
+        ],
+    ]);
 ?>
+
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -68,15 +75,20 @@ if (isset($_SESSION['userData']))
             //'prioridad',
             'estado',
             //No results found.
-           /* [
+            [
                 //'class' => ActionColumn::className(),
                 'class' => 'yii\grid\ActionColumn',
                 //'header'=>"Ver",
                 'template' => '{view}',
-                'urlCreator' => function ($action, Turno $model, $key, $index, $column) {
+                /*'urlCreator' => function ()
+                {},*/
+                /*'urlCreator' => function ($action, Turno $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],*/
+                 }*/
+                /*'urlCreator' => function ($action, Turno $model, $key, $index, $column) {
+                    return Url::toRoute(['view', 'id']);
+                 }*/
+            ],
         ],
     ]); ?>
 
