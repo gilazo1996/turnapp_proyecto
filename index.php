@@ -40,6 +40,7 @@ if ($gClient->getAccessToken()) {
     $gpUserData['locale'] = !empty($gpUserProfile['locale'])?$gpUserProfile['locale']:'';
     $gpUserData['picture'] = !empty($gpUserProfile['picture'])?$gpUserProfile['picture']:'';
     $gpUserData['link'] = !empty($gpUserProfile['link'])?$gpUserProfile['link']:'';
+    $gpUserData['rol'] = !empty($gpUserProfile['rol'])?$gpUserProfile['rol']:'';
     
     // Insert or update user data to the database
     $gpUserData['oauth_provider'] = 'google';
