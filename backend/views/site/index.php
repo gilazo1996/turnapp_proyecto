@@ -79,7 +79,7 @@ if (isset($_SESSION['userData']))
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Visualice los turnos en modo calendario.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-primary">Ver</a>
+        <a href="<?php echo Url::toRoute(["../../backend/calendario"]);?>" class="btn btn-primary">Ver</a>
     </div>
 
 </div>

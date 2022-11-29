@@ -19,7 +19,10 @@ use backend\models\Horario;
 require "../../rbac/control.php";
 require "../../rbac/errores.php";
 
-$ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
+$ambito = ['Hospital'=>'Hospital', 'Banco'=>'Banco','Otros'=>'Otros'];
+$horario=['06:00'=>'06:00', '07:00'=>'07:00', '08:00'=>'08:00', '09:00'=>'09:00', 
+'10:00'=>'10:00', '11:00'=>'11:00', '12:00'=>'12:00', '13:00'=>'13:00', '14:00'=>'14:00', 
+'15:00'=>'15:00', '16:00'=>'16:00', '17:00'=>'17:00', '18:00'=>'18:00', '19:00'=>'19:00', '20:00'=>'20:00',];
 ?>
 
 <?php 
@@ -41,7 +44,10 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_profesional')->dropDownList((ArrayHelper::map(Profesional::find()->all(), 'id', 'nombre')), ['prompt' => 'Seleccione el profesional' ]); ?>
+    <?= $form->field($model, 'cliente')->textInput(['maxlength' => true, 'placeholder' => '']); ?>  
+
+
+    <?= $form->field($model, 'nombre_profesional')->dropDownList((ArrayHelper::map(Profesional::find()->all(), 'nombre', 'nombre')), ['prompt' => 'Seleccione el profesional' ]); ?>
 
     <?= $form->field($model, 'fecha_turno')->widget(\yii\jui\DatePicker::className(), [
         
@@ -51,14 +57,19 @@ $ambito = ['0'=>'Centro medico', '1'=>'Banco','2'=>'Otros'];
     /*  ... you can configure more DatePicker properties here */])->textInput(['placeholder' => 'Seleccione la fecha',
     'from_date', 'default']) ?>
 
-    <!-- ?= $form->field($model, 'horario')->dropDownList(($horario), ['prompt' => 'Seleccione el horario' ]); ?> -->
+     <?= $form->field($model, 'horario')->dropDownList(($horario), ['prompt' => 'Seleccione el horario' ]); ?>
 
-    <?= $form->field($model, 'horario')->dropDownList((ArrayHelper::map(Horario::find()->all(), 'id', 'hora')), ['prompt' => 'Seleccione el horario' ]); ?>
+    <!-- <= $form->field($model, 'horario')->dropDownList((ArrayHelper::map(Horario::find()->all(), 'id', 'hora')), ['prompt' => 'Seleccione el horario' ]); ?>
+    -->
 
     <?= $form->field($model, 'ambito')->dropDownList(($ambito), ['prompt' => 'Seleccione el ambito' ]); ?>
 
-    <?= $form->field($model, 'detalle')->textInput(['maxlength' => true, 'placeholder' => 'Agregue sus notas personales']); ?>  
     
+    <?= $form->field($model, 'oauth_uid')->hiddenInput(['value'=> $id_google])->label(false); ?>
+
+    <?= $form->field($model, 'detalle')->textInput(['maxlength' => true, 'placeholder' => 'Agregue sus notas personales']); ?>  
+
+
     <br>
     
     <div class="form-group">

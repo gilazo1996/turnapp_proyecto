@@ -60,12 +60,12 @@ if (isset($_SESSION['userData']))
             'email',
             'rol',
             //'fecha_nacimiento',
-           /* [
-                //'class' => ActionColumn::className(),
-                //'urlCreator' => function ($action, Cliente $model, $key, $index, $column) {
-                    //return Url::toRoute([$action, 'id' => $model->id]);
-                 //}
-            ],*/
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Cliente $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                 }
+            ],
         ],
     ]); ?>
 

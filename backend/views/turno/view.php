@@ -108,6 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'horario',
             //'prioridad',
             'ambito',
+            'detalle',
             'estado',
         ],
     ]) ?>
@@ -214,6 +215,7 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
+
 </script>
 <!--Tabla mockup-->
 <style> 
@@ -289,3 +291,4 @@ td:last-child {
 changeColor();
 </script>
 <!--Colorear tabla-->
+

@@ -53,18 +53,18 @@ if (isset($_SESSION['userData']))
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
             <p class="card-text text-white"> Visualice los turnos en modo calendario.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-primary">Ver</a>
+        <a href="<?php echo Url::toRoute(["../../backend/calendario"]);?>" class="btn btn-primary">Ver</a>
     </div>
 <!--////////////////////////////////////////////////////////////////////////////////////-->
     <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
             <div class="card-header">
-            <h4 class="card-title text-white"> LECTOR QR </h4>
+            <h4 class="card-title text-white"> QR GENERADOS</h4>
         </div>
         <div class="card-body">
             <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
-            <p class="card-text text-white"> Escanee el codigo QR para validar turnos.</p>
+            <p class="card-text text-white"> Mire los qr generados.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-primary">Ver</a>
+        <a href="<?php echo Url::toRoute(["../../vistaqr.html"]);?>" class="btn btn-primary">Ver</a>
     </div>
     
 </div>
@@ -95,14 +95,15 @@ if (isset($_SESSION['userData']))
 <!--////////////////////////////////////////////////////////////////////////////////////-->
     <div class="card" style="height:220px; width:300px; margin:3%; background-color: rgb(50,58,64);">
             <div class="card-header">
-            <h4 class="card-title text-white"> ASIGNAR PROVEEDORES </h4>
+            <h4 class="card-title text-white"> GENERADOR QR </h4>
         </div>
         <div class="card-body">
-            <!-- <h5 class="card-title text-white"> MIS TURNOS </h5> -->
-            <p class="card-text text-white"> Gestione rol de usuarios.</p>
+             <!--<h5 class="card-title text-white"> MIS TURNOS </h5> -->
+            <p class="card-text text-white"> Genere codigos de turnos.</p>
         </div>
-        <a href="<?php echo Url::toRoute(["*"]);?>" class="btn btn-primary">Ver</a>
+        <a href="<?php echo Url::toRoute(["../../qrcode"]);?>" class="btn btn-primary">Ver</a>
     </div>
+   
     
 </div>
 

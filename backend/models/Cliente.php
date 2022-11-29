@@ -12,6 +12,7 @@ use Yii;
  * @property string $nombre
  * @property string $apellido
  * @property string $email
+ * @property string $rol
  * @property string|null $fecha_nacimiento
  */
 class Cliente extends \yii\db\ActiveRecord
@@ -33,7 +34,7 @@ class Cliente extends \yii\db\ActiveRecord
             [['dni', 'nombre', 'apellido', 'email','rol'], 'required'],
             [['dni'], 'integer'],
             [['fecha_nacimiento','cliente','nombre_profesional'], 'safe'],
-            [['nombre'], 'string', 'max' => 50],
+            [['nombre','rol'], 'string', 'max' => 50],
             [['apellido', 'email'], 'string', 'max' => 100],
         ];
     }
@@ -45,11 +46,12 @@ class Cliente extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'dni' => 'Dni',
+           /* 'dni' => 'Dni',*/
             'nombre' => 'Nombre',
             'apellido' => 'Apellido',
-            'email' => 'Email',
-            'fecha_nacimiento' => 'Fecha Nacimiento',
+            //'email' => 'Email',
+            //'fecha_nacimiento' => 'Fecha Nacimiento',
+            'rol' => 'Rol',
         ];
     }
 }

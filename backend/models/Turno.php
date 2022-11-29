@@ -35,14 +35,14 @@ class Turno extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_cliente', 'id_profesional', 'prioridad', 'estado'], 'required'],
+            [['id_cliente', 'id_profesional', 'prioridad', 'estado'], 'safe'],
             [['id_cliente', 'id_profesional', 'id_sala', 'prioridad'], 'integer'],
-            [['fecha_turno'], 'required'],
+            [['fecha_turno'], 'safe'],
             [['codigo_turno'], 'string', 'max' => 15],
-            [['detalle'], 'string', 'max' => 140],
-            [['estado'], 'string', 'max' => 50],
-            [['id_cliente'], 'integer'],
-            [['horario'], 'required'],
+            [['detalle','oauth_uid','nombre_profesional','estado','horario'], 'string', 'max' => 140],
+            [['estado','cliente'], 'string', 'max' => 50],
+          //  [['cliente'], 'string'],
+           // [['horario'], 'safe'],
             [['ambito'], 'string', 'max' => 20],
         ];
     }
